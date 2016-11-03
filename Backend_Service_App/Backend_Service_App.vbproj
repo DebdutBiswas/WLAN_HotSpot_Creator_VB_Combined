@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1F105A5B-6964-4507-87D4-A358D82944C8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>WLANHotspotCreator.WLANHotspotCreatorService</StartupObject>
-    <RootNamespace>WLANHotspotCreator</RootNamespace>
+    <StartupObject>WLANHotspotCreator.Backend.WLANHotspotCreatorService</StartupObject>
+    <RootNamespace>WLANHotspotCreator.Backend</RootNamespace>
     <AssemblyName>WLANHotspotCreator</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
@@ -44,6 +44,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>service_app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -119,6 +122,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="service_app_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

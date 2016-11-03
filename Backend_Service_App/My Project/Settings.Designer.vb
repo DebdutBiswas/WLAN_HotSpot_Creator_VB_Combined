@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.WLANHotspotCreator.My.MySettings
+        Friend ReadOnly Property Settings() As Global.WLANHotspotCreator.Backend.My.MySettings
             Get
-                Return Global.WLANHotspotCreator.My.MySettings.Default
+                Return Global.WLANHotspotCreator.Backend.My.MySettings.Default
             End Get
         End Property
     End Module
