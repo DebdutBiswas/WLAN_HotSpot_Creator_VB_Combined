@@ -6,11 +6,13 @@ Namespace IcsManagerLibrary
 		Private Shared ReadOnly SharingManager As INetSharingManager = New NetSharingManager()
 
 		Public Shared Function GetIPv4EthernetAndWirelessInterfaces() As IEnumerable(Of NetworkInterface)
-			Return From nic In NetworkInterface.GetAllNetworkInterfaces() _
-			       Where nic.Supports(NetworkInterfaceComponent.IPv4) _
-			       Where (nic.NetworkInterfaceType = NetworkInterfaceType.Ethernet) OrElse (nic.NetworkInterfaceType = NetworkInterfaceType.Wireless80211) OrElse (nic.NetworkInterfaceType = NetworkInterfaceType.GigabitEthernet) _
-			       Select nic
-		End Function
+            Return From nic In NetworkInterface.GetAllNetworkInterfaces()
+                   Where nic.Supports(NetworkInterfaceComponent.IPv4)
+                   Where (nic.NetworkInterfaceType = NetworkInterfaceType.Ethernet) _
+                   OrElse (nic.NetworkInterfaceType = NetworkInterfaceType.Wireless80211) _
+                   OrElse (nic.NetworkInterfaceType = NetworkInterfaceType.GigabitEthernet)
+                   Select nic
+        End Function
 
 		Public Shared Function GetAllIPv4Interfaces() As IEnumerable(Of NetworkInterface)
 			Return From nic In NetworkInterface.GetAllNetworkInterfaces() _

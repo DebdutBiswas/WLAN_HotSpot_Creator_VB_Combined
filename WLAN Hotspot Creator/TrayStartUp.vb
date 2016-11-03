@@ -3,16 +3,16 @@
 Public Class TrayStartUp
     Inherits ApplicationContext
 
-    Public WithEvents AppTray As New NotifyIcon
-    Private WithEvents TrayMenuStrip As New ContextMenuStrip
-    Private WithEvents StartTrayMenuItm As New ToolStripMenuItem("&Start Hotspot")
-    Private WithEvents StopTrayMenuItm As New ToolStripMenuItem("St&op Hotspot")
-    Private WithEvents OpenAppTrayMenuItm As New ToolStripMenuItem("Open &Application")
-    Private WithEvents CloseAppTrayMenuItm As New ToolStripMenuItem("&Close Application")
-    Private WithEvents ExitTrayMenuItm As New ToolStripMenuItem("&Exit")
-    Dim MainWindow As New MainDialog
+    Public Shared WithEvents AppTray As New NotifyIcon
+    Public Shared WithEvents TrayMenuStrip As New ContextMenuStrip
+    Public Shared WithEvents StartTrayMenuItm As New ToolStripMenuItem("&Start Hotspot")
+    Public Shared WithEvents StopTrayMenuItm As New ToolStripMenuItem("St&op Hotspot")
+    Public Shared WithEvents OpenAppTrayMenuItm As New ToolStripMenuItem("Open &Application")
+    Public Shared WithEvents CloseAppTrayMenuItm As New ToolStripMenuItem("&Close Application")
+    Public Shared WithEvents ExitTrayMenuItm As New ToolStripMenuItem("&Exit")
+    Public Shared MainWindow As New MainDialog
 
-    Public Sub TrayMenuStripInitialize()
+    Private Sub TrayMenuStripInitialize()
 
         TrayMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {StartTrayMenuItm, StopTrayMenuItm, OpenAppTrayMenuItm, CloseAppTrayMenuItm, ExitTrayMenuItm})
         TrayMenuStrip.ShowImageMargin = False
@@ -21,7 +21,7 @@ Public Class TrayStartUp
 
     End Sub
 
-    Public Sub AppTrayInitialize()
+    Private Sub AppTrayInitialize()
 
         TrayMenuStripInitialize()
         AppTray.Text = "WLAN Hotspot Creator"
@@ -30,7 +30,7 @@ Public Class TrayStartUp
 
     End Sub
 
-    Public Sub TrayAppStartedStatus()
+    Private Shared Sub TrayAppStartedStatus()
 
         AppTray.Icon = My.Resources.connection_icon_white
         AppTray.BalloonTipIcon = ToolTipIcon.Info
@@ -49,7 +49,7 @@ Public Class TrayStartUp
 
     End Sub
 
-    Private Sub AppTray_Click(sender As Object, e As EventArgs) Handles AppTray.Click
+    Private Shared Sub AppTray_Click(sender As Object, e As EventArgs) Handles AppTray.Click
 
         If MainWindow.Visible = True Then
             OpenAppTrayMenuItm.Visible = False
@@ -61,7 +61,7 @@ Public Class TrayStartUp
 
     End Sub
 
-    Private Sub OpenAppTrayMenuItm_Click(sender As Object, e As EventArgs) Handles OpenAppTrayMenuItm.Click
+    Private Shared Sub OpenAppTrayMenuItm_Click(sender As Object, e As EventArgs) Handles OpenAppTrayMenuItm.Click
 
         If MainWindow.Visible = False Then
             OpenAppTrayMenuItm.Visible = False
@@ -71,7 +71,7 @@ Public Class TrayStartUp
 
     End Sub
 
-    Private Sub CloseAppTrayMenuItm_Click(sender As Object, e As EventArgs) Handles CloseAppTrayMenuItm.Click
+    Private Shared Sub CloseAppTrayMenuItm_Click(sender As Object, e As EventArgs) Handles CloseAppTrayMenuItm.Click
 
         If MainWindow.Visible = True Then
             CloseAppTrayMenuItm.Visible = False
@@ -81,17 +81,66 @@ Public Class TrayStartUp
 
     End Sub
 
-    Private Sub ExitTrayMenuItm_Click(sender As Object, e As EventArgs) Handles ExitTrayMenuItm.Click
+    Private Shared Sub ExitTrayMenuItm_Click(sender As Object, e As EventArgs) Handles ExitTrayMenuItm.Click
 
-        'MsgBox("Do you want to exit application?", MsgBoxStyle.YesNo, "WLAN Hotspot Creator")
-        'If Conf.DialogResult = DialogResult.OK Then
-        AppTray.Visible = False
-        Me.Dispose()
-        Application.Exit()
-        'If MsgBoxResult.No Then
-        'End If
-        'End If
+        Dim conf As DialogResult
+        conf = MessageBox.Show("Do you want to exit application?", "WLAN Hotspot Creator", MessageBoxButtons.YesNo)
+        If conf = DialogResult.Yes Then
+            AppTray.Visible = False
+            'MainDialog.Dispose()
+            Application.Exit()
+        End If
+
+    End Sub
+    '--AppTray Shared Status Functions-----------------------------------------------------------
+    Public Shared Sub TrayStartingStatus()
+
+        AppTray.Icon = My.Resources.connection_icon_blue
+        AppTray.BalloonTipIcon = ToolTipIcon.Info
+        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
+        AppTray.BalloonTipText = "Creating Hotspot..."
+        AppTray.ShowBalloonTip(500)
 
     End Sub
 
+    Public Shared Sub TrayStartedStatus()
+
+        AppTray.Icon = My.Resources.connection_icon_green
+        AppTray.BalloonTipIcon = ToolTipIcon.Info
+        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
+        AppTray.BalloonTipText = "Hotspot Started..."
+        AppTray.ShowBalloonTip(500)
+
+    End Sub
+
+    Public Shared Sub TrayStoppingStatus()
+
+        AppTray.Icon = My.Resources.connection_icon_yellow
+        AppTray.BalloonTipIcon = ToolTipIcon.Info
+        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
+        AppTray.BalloonTipText = "Stopping Hotspot..."
+        AppTray.ShowBalloonTip(500)
+
+    End Sub
+
+    Public Shared Sub TrayStoppedStatus()
+
+        AppTray.Icon = My.Resources.connection_icon_red
+        AppTray.BalloonTipIcon = ToolTipIcon.Info
+        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
+        AppTray.BalloonTipText = "Hotspot Stopped..."
+        AppTray.ShowBalloonTip(500)
+
+    End Sub
+
+    Public Shared Sub TrayErrorStatus()
+
+        AppTray.Icon = My.Resources.connection_icon_red
+        AppTray.BalloonTipIcon = ToolTipIcon.Info
+        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
+        AppTray.BalloonTipText = "Hotspot couldn't be started..."
+        AppTray.ShowBalloonTip(500)
+
+    End Sub
+    '--------------------------------------------------------------------------------------------
 End Class

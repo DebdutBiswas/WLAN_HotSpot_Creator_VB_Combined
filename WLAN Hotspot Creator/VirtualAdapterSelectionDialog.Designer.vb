@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class VirtualAdapterSelectionDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,11 @@ Partial Class VirtualAdapterSelectionDialog
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VirtualAdapterSelectionDialog))
         Me.IcsVirtualAdapterIdComboBox = New System.Windows.Forms.ComboBox()
         Me.selectButton = New System.Windows.Forms.Button()
         Me.SelectConnectionLabel = New System.Windows.Forms.Label()
-        Me.VisualStyler = New SkinSoft.VisualStyler.VisualStyler(Me.components)
-        CType(Me.VisualStyler, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IcsVirtualAdapterIdComboBox
@@ -59,13 +55,6 @@ Partial Class VirtualAdapterSelectionDialog
         Me.SelectConnectionLabel.TabIndex = 7
         Me.SelectConnectionLabel.Text = "Multiple virtual network adapters are detected!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Select any one from the list: "
         '
-        'VisualStyler
-        '
-        Me.VisualStyler.HostForm = Me
-        Me.VisualStyler.License = CType(resources.GetObject("VisualStyler.License"), SkinSoft.VisualStyler.Licensing.VisualStylerLicense)
-        Me.VisualStyler.ShadowStyle = SkinSoft.VisualStyler.ShadowStyle.Medium
-        Me.VisualStyler.LoadVisualStyle(Nothing, "XP Royale (Black).vssf")
-        '
         'VirtualAdapterSelectionDialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -84,7 +73,6 @@ Partial Class VirtualAdapterSelectionDialog
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "                  Multiple Virtual Adapter(s)"
-        CType(Me.VisualStyler, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -93,5 +81,4 @@ Partial Class VirtualAdapterSelectionDialog
     Private WithEvents IcsVirtualAdapterIdComboBox As ComboBox
     Public WithEvents selectButton As Button
     Private WithEvents SelectConnectionLabel As Label
-    Friend WithEvents VisualStyler As SkinSoft.VisualStyler.VisualStyler
 End Class

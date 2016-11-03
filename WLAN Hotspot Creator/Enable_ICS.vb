@@ -1,8 +1,8 @@
 ﻿Imports System.Management.Automation
 
 Namespace IcsManagerLibrary
-	<Cmdlet(VerbsLifecycle.Enable, "ICS")> _
-	Public Class Enable_ICS
+    <Cmdlet(VerbsLifecycle.Enable, "ICS")>
+    Public Class Enable_ICS
 		Inherits PSCmdlet
 
 		<Parameter(HelpMessage := "Connection to share (name or GUID)", Mandatory := True, Position := 0)> _

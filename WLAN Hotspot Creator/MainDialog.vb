@@ -134,9 +134,13 @@ Public Class MainDialog
 
         'CheckForIllegalCrossThreadCalls = False
 
+        VisualStyler.RestoreApplicationSkin()
+
         If Not System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.System) + "\netsh.exe") Then
             MsgBox("netsh.exe Not found!", MsgBoxStyle.Critical, "Error!")
-            Me.Close()
+            AppTray.Visible = False
+            Me.Dispose()
+            Application.Exit()
         Else
             AppTray.Visible = True
             StartUpRegistryCheck()
@@ -174,56 +178,6 @@ Public Class MainDialog
         ShowPasswordChkBox.Enabled = False
         connectionComboBox.Enabled = False
         refreshConnectionButton.Enabled = False
-
-    End Sub
-
-    Public Sub TrayStartingStatus()
-
-        AppTray.Icon = My.Resources.connection_icon_blue
-        AppTray.BalloonTipIcon = ToolTipIcon.Info
-        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
-        AppTray.BalloonTipText = "Creating Hotspot..."
-        AppTray.ShowBalloonTip(500)
-
-    End Sub
-
-    Public Sub TrayStartedStatus()
-
-        AppTray.Icon = My.Resources.connection_icon_green
-        AppTray.BalloonTipIcon = ToolTipIcon.Info
-        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
-        AppTray.BalloonTipText = "Hotspot Started..."
-        AppTray.ShowBalloonTip(500)
-
-    End Sub
-
-    Public Sub TrayStoppingStatus()
-
-        AppTray.Icon = My.Resources.connection_icon_yellow
-        AppTray.BalloonTipIcon = ToolTipIcon.Info
-        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
-        AppTray.BalloonTipText = "Stopping Hotspot..."
-        AppTray.ShowBalloonTip(500)
-
-    End Sub
-
-    Public Sub TrayStoppedStatus()
-
-        AppTray.Icon = My.Resources.connection_icon_red
-        AppTray.BalloonTipIcon = ToolTipIcon.Info
-        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
-        AppTray.BalloonTipText = "Hotspot Stopped..."
-        AppTray.ShowBalloonTip(500)
-
-    End Sub
-
-    Public Sub TrayErrorStatus()
-
-        AppTray.Icon = My.Resources.connection_icon_red
-        AppTray.BalloonTipIcon = ToolTipIcon.Info
-        AppTray.BalloonTipTitle = "WiFi Hotspot Status"
-        AppTray.BalloonTipText = "Hotspot couldn't be started..."
-        AppTray.ShowBalloonTip(500)
 
     End Sub
 
@@ -504,11 +458,11 @@ Public Class MainDialog
 
     Private Sub MainDialog_VisibleChanged(sender As Object, e As EventArgs) Handles Me.VisibleChanged
 
-        If Me.Visible = False Then
-            AppTray.Visible = False
-        ElseIf Me.Visible = True Then
-            AppTray.Visible = True
-        End If
+        'If Me.Visible = False Then
+        'AppTray.Visible = False
+        'ElseIf Me.Visible = True Then
+        'AppTray.Visible = True
+        'End If
 
     End Sub
 

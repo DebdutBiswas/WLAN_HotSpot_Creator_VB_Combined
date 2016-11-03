@@ -1,8 +1,8 @@
 ﻿Imports System.Management.Automation
 
 Namespace IcsManagerLibrary
-	<Cmdlet(VerbsLifecycle.Disable, "ICS")> _
-	Public Class Disable_ICS
+    <Cmdlet(VerbsLifecycle.Disable, "ICS")>
+    Public Class Disable_ICS
 		Inherits PSCmdlet
 
 		Protected Overrides Sub ProcessRecord()

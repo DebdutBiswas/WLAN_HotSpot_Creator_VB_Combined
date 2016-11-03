@@ -3,9 +3,8 @@
 Namespace IcsManagerLibrary
 	Public Class NetShare
 
-		Public SharedConnection As INetConnection
-
-		Public HomeConnection As INetConnection
+        Public SharedConnection As INetConnection
+        Public HomeConnection As INetConnection
 
 		Public Sub New(ByVal sharedConnection As INetConnection, ByVal homeConnection As INetConnection)
 			Me.SharedConnection = sharedConnection

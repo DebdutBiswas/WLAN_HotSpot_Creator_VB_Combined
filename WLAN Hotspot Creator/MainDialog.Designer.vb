@@ -25,7 +25,6 @@ Partial Class MainDialog
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainDialog))
         Me.VisualStyler = New SkinSoft.VisualStyler.VisualStyler(Me.components)
-        Me.AppTray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.TrayMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.StartTrayMenuItm = New System.Windows.Forms.ToolStripMenuItem()
         Me.StopTrayMenuItm = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,19 +51,12 @@ Partial Class MainDialog
         '
         'VisualStyler
         '
+        Me.VisualStyler.HookVisualStyles = True
         Me.VisualStyler.HostForm = Me
         Me.VisualStyler.License = CType(resources.GetObject("VisualStyler.License"), SkinSoft.VisualStyler.Licensing.VisualStylerLicense)
-        Me.VisualStyler.ShadowStyle = SkinSoft.VisualStyler.ShadowStyle.Medium
+        Me.VisualStyler.ShadowStyle = SkinSoft.VisualStyler.ShadowStyle.Bold
+        Me.VisualStyler.ToolStripStyle = SkinSoft.VisualStyler.ToolStripRenderStyle.OfficeRoyale
         Me.VisualStyler.LoadVisualStyle(Nothing, "XP Royale (Black).vssf")
-        '
-        'AppTray
-        '
-        Me.AppTray.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.AppTray.BalloonTipText = "WLAN Hotspot Creator"
-        Me.AppTray.BalloonTipTitle = "WLAN Hotspot Creator"
-        Me.AppTray.ContextMenuStrip = Me.TrayMenuStrip
-        Me.AppTray.Icon = CType(resources.GetObject("AppTray.Icon"), System.Drawing.Icon)
-        Me.AppTray.Text = "WLAN Hotspot Creator"
         '
         'TrayMenuStrip
         '
@@ -240,15 +232,12 @@ Partial Class MainDialog
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents VisualStyler As SkinSoft.VisualStyler.VisualStyler
     Private WithEvents refreshConnectionButton As Button
     Private WithEvents connectionComboBox As ComboBox
     Private WithEvents connectionLabel As Label
     Private WithEvents passwordLabel As Label
     Private WithEvents ssidLabel As Label
     Private WithEvents MainDialogToolTip As ToolTip
-    Private WithEvents AppTray As NotifyIcon
     Private WithEvents StartTrayMenuItm As ToolStripMenuItem
     Private WithEvents StopTrayMenuItm As ToolStripMenuItem
     Private WithEvents OpenAppTrayMenuItm As ToolStripMenuItem
@@ -263,4 +252,5 @@ Partial Class MainDialog
     Private WithEvents IcsRefreshThread As System.ComponentModel.BackgroundWorker
     Private WithEvents IcsConnectThread As System.ComponentModel.BackgroundWorker
     Private WithEvents ConsoleThread As System.ComponentModel.BackgroundWorker
+    Private WithEvents VisualStyler As SkinSoft.VisualStyler.VisualStyler
 End Class

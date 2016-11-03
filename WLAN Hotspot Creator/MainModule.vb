@@ -5,6 +5,7 @@ Module MainModule
     Public IcsVirtualAdapterId As String
     Public Sub Main()
 
+        Application.EnableVisualStyles()
         Application.Run(New TrayStartUp)
 
     End Sub
