@@ -5,7 +5,7 @@ Public Class WLANHotspotCreatorServiceInstaller
 
     Public Sub New()
         MyBase.New()
-
+        '
         'This call is required by the Component Designer.
         InitializeComponent()
 
